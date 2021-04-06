@@ -7,6 +7,6 @@ const bodyParser = require('body-parser');
 const app = express() ; 
 app.use(bodyParser.json())
 app.use('/user',(userRoute))
-mongoose.connect('mongodb+srv://zied:zaidou2012@cluster0.x7ki2.mongodb.net/RESTAPI?retryWrites=true&w=majority' ,{useNewUrlParser: true ,useUnifiedTopology: true },()=>console.log('we are connected'))
+mongoose.connect(`mongodb+srv://zied:${process.env.DB_PSSWRD}@cluster0.x7ki2.mongodb.net/RESTAPI?retryWrites=true&w=majority` ,{useNewUrlParser: true ,useUnifiedTopology: true },()=>console.log('we are connected'))
 
 app.listen(3000,()=>console.log('we are listening to port')) 
