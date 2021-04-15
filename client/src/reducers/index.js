@@ -3,7 +3,10 @@ const initialState = {
 };
 
 const myReducer = (state = initialState, action) => {
-  switch (action.typ) {
+  switch (action.type) {
+    case "GET_CONTACT":
+      return { ...state, contactList: action.payload };
+
     default:
       return state;
   }

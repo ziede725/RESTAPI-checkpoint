@@ -7,19 +7,16 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core";
+import ContactElement from "./ContactElement";
+import { useDispatch, useSelector } from "react-redux";
+import { getContacts } from "../actions/ContactActions";
 
 const ContactList = () => {
-  const [contact, setContact] = useState([]);
+  const contact = useSelector((state) => state.contactList);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch("http://localhost:5000/user").then((res) =>
-      res.json().then((data) => setContact(data))
-    );
-  }, []);
-  useEffect(() => {
-    const createData = (id, lastName, firstName, email, phone) => {
-      return { id, lastName, firstName, email, phone };
-    };
+    dispatch(getContacts());
   }, []);
 
   const rows = contact.map((el) => el);
@@ -40,16 +37,14 @@ const ContactList = () => {
           </TableHead>
           <TableBody>
             {rows.map((row) => (
-              <TableRow key={row._id}>
-                <TableCell>
-                  <Button>Edit</Button>
-                </TableCell>
-                <TableCell>{row._id}</TableCell>
-                <TableCell>{row.name}</TableCell>
-                <TableCell>{row.lastName}</TableCell>
-                <TableCell>{row.email}</TableCell>
-                <TableCell>{row.phoneNumber}</TableCell>
-              </TableRow>
+              <ContactElement
+                key={row._id}
+                _id={row._id}
+                name={row.name}
+                lastName={row.lastName}
+                email={row.email}
+                phoneNumber={row.phoneNumber}
+              />
             ))}
           </TableBody>
         </Table>
