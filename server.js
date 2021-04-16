@@ -5,7 +5,7 @@ const user = require("./models/User");
 const userRoute = require("./routes/router");
 const cors = require("cors");
 const app = express();
-const port = 5000;
+const port = 4700;
 app.use(cors());
 app.use(express.json());
 app.use("/user", userRoute);
@@ -16,3 +16,4 @@ mongoose.connect(
 );
 
 app.listen(port, () => console.log("we are  listening to port"));
+console.log("hello");

@@ -19,8 +19,6 @@ const ContactList = () => {
     dispatch(getContacts());
   }, []);
 
-  const rows = contact.map((el) => el);
-
   return (
     <>
       <div>
@@ -36,7 +34,7 @@ const ContactList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {contact.map((row) => (
               <ContactElement
                 key={row._id}
                 _id={row._id}
