@@ -18,7 +18,12 @@ const ContactElement = ({ _id, name, lastName, email, phoneNumber }) => {
     <>
       <TableRow>
         <TableCell>
-          <EditModal id={_id}></EditModal>
+          <EditModal
+            id={_id}
+            Name={name}
+            LastName={lastName}
+            Email={email}
+            PhoneNumber={phoneNumber}></EditModal>
 
           <Button onClick={() => dispatch(removeContact(_id))}>Remove </Button>
         </TableCell>

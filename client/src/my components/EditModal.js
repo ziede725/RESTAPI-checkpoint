@@ -9,12 +9,12 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { editContact } from "../actions/ContactActions";
 import { useDispatch } from "react-redux";
 
-const EditModal = ({ id }) => {
+const EditModal = ({ id, Name, LastName, Email, PhoneNumber }) => {
   const [open, setOpen] = useState(false);
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState(Email);
+  const [name, setName] = useState(Name);
+  const [lastName, setLastName] = useState(LastName);
+  const [phoneNumber, setPhoneNumber] = useState(PhoneNumber);
   const dispatch = useDispatch();
 
   const handleClickOpen = () => {
@@ -24,7 +24,7 @@ const EditModal = ({ id }) => {
   const handleClose = () => {
     setOpen(false);
   };
-  console.log(open);
+  console.log(name, lastName, phoneNumber, email);
   return (
     <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
