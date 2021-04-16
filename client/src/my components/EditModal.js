@@ -34,7 +34,7 @@ const EditModal = ({ id }) => {
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">Edit Contact</DialogTitle>
         <DialogContent>
           <DialogContentText>Enter the required fields</DialogContentText>
           <TextField
@@ -46,6 +46,7 @@ const EditModal = ({ id }) => {
             required
             fullWidth
             onChange={(event) => setName(event.target.value)}
+            value={name}
           />
           <TextField
             autoFocus
@@ -56,6 +57,7 @@ const EditModal = ({ id }) => {
             required
             fullWidth
             onChange={(event) => setLastName(event.target.value)}
+            value={lastName}
           />
           <TextField
             autoFocus
@@ -65,6 +67,7 @@ const EditModal = ({ id }) => {
             type="email"
             required
             onChange={(event) => setEmail(event.target.value)}
+            value={email}
             fullWidth
           />
           <TextField
@@ -76,6 +79,7 @@ const EditModal = ({ id }) => {
             required
             fullWidth
             onChange={(event) => setPhoneNumber(event.target.value)}
+            value={phoneNumber}
           />
         </DialogContent>
         <DialogActions>
@@ -83,11 +87,12 @@ const EditModal = ({ id }) => {
             Cancel
           </Button>
           <Button
-            onClick={() =>
-              dispatch(editContact({ id, name, lastName, email, phoneNumber }))
-            }
+            onClick={() => {
+              dispatch(editContact({ id, name, lastName, email, phoneNumber }));
+              handleClose();
+            }}
             color="primary">
-            Subscribe
+            Save
           </Button>
         </DialogActions>
       </Dialog>

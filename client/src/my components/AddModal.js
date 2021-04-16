@@ -84,9 +84,10 @@ const AddModal = () => {
             Cancel
           </Button>
           <Button
-            onClick={() =>
-              dispatch(addContact({ name, lastName, email, phoneNumber }))
-            }
+            onClick={() => {
+              dispatch(addContact({ name, lastName, email, phoneNumber }));
+              handleClose();
+            }}
             color="primary">
             Save
           </Button>
